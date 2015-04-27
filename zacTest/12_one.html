@@ -36,15 +36,15 @@
 				
 				var material = new THREE.MeshNormalMaterial();
 				
-			for(var i=0; i<500; i++){
+			for(var i=0; i<10; i++){
 				var mesh = new THREE.Mesh( geometry, material);
 				mesh.position.x = (Math.random() - 0.5)* 1000;				
 				mesh.position.y = (Math.random() - 0.5)* 1000;				
 				mesh.position.z = (Math.random() - 0.5 )* 1000;				
 				
-				mesh.rotation.x = Math.random();				
-				mesh.rotation.y = Math.random();				
-				mesh.rotation.z = Math.random();				
+				//mesh.rotation.x = Math.random();				
+				//mesh.rotation.y = Math.random();				
+				//mesh.rotation.z = Math.random();				
 				
 				scene.add(mesh);
 			}

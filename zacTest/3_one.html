@@ -32,16 +32,16 @@
 			var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
 			camera.position.y = -450;
 			camera.position.z = 400;
-			camera.rotation.x = 0;
+			camera.rotation.x = .7;
 			
 			var scene = new THREE.Scene();
 
 			var cube = new THREE.Mesh(new THREE.CubeGeometry(200, 200, 200), new THREE.MeshNormalMaterial());
 
-			cube.rotation.z = .5;
+			cube.rotation.z = 0;
 			scene.add(cube);
-				
-			animate();
+			renderer.render(scene, camera);	
+			//animate();
 		</script>
 	</body>
 </html>
