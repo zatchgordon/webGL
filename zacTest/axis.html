@@ -1,0 +1,104 @@
+<html>
+	<head>
+	<style>
+		body{
+			margin:0;
+		}
+	</style>
+	</head>
+	<body>
+		<script src = "../build/three.min.js"></script> 
+		<script src = "../examples/js/controls/TrackballControls.js
+"></script> 
+		<script>
+			var camera, controls, scene, renderer;
+			var mx = 500;
+			var my = 500;
+			var mz = 500;
+                        //roations per second 0.2 = 5 seconds to roate
+                        var angularSpeed = 0.2;
+                        var lastTime = 0;
+
+
+			init();
+			animate();
+
+
+
+			function init(){
+				camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
+				camera.position.z = 1;
+				camera.position.y = -1500;
+				
+				controls = new THREE.TrackballControls(camera);
+				controls.addEventListener("change", render);
+				
+				scene = new THREE.Scene();
+				var geometry = new THREE.CubeGeometry(10,10,10);
+				
+				var material = new THREE.MeshNormalMaterial();
+				
+			for(var i=0; i<100; i++){
+				var mesh = new THREE.Mesh( geometry, material);
+				mesh.position.x = mx;				
+				mesh.position.y = 0;				
+				mesh.position.z = 0;				
+				
+				//mesh.rotation.x = Math.random();				
+				//mesh.rotation.y = Math.random();				
+				//mesh.rotation.z = .7;				
+				
+				scene.add(mesh);
+				mx -= 10;
+			}
+			for(var i=0; i<100; i++){
+				var mesh = new THREE.Mesh( geometry, material);
+				mesh.position.x = 0;				
+				mesh.position.y = my;				
+				mesh.position.z = 0;				
+				
+				//mesh.rotation.x = Math.random();				
+				//mesh.rotation.y = Math.random();				
+				//mesh.rotation.z = .7;				
+				
+				scene.add(mesh);
+				my -= 10;
+			}
+			for(var i=0; i<100; i++){
+				var mesh = new THREE.Mesh( geometry, material);
+				mesh.position.x = 0;				
+				mesh.position.y = 0;				
+				mesh.position.z = mz;				
+				
+				//mesh.rotation.x = Math.random();				
+				//mesh.rotation.y = Math.random();				
+				//mesh.rotation.z = .7;				
+				
+				scene.add(mesh);
+				mz -= 10;
+			}
+				
+
+				renderer = new THREE.WebGLRenderer();
+				renderer.setSize(window.innerWidth, window.innerHeight);
+				document.body.appendChild(renderer.domElement);
+				renderer.render( scene, camera );
+
+
+
+
+
+			}
+
+			function animate(){
+				requestAnimationFrame( animate );
+				controls.update();
+			}
+
+			function render(){
+				renderer.render( scene, camera );
+			}
+
+		</script>
+	</body>
+</html>
